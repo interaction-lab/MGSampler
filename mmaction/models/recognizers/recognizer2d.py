@@ -40,6 +40,9 @@ class Recognizer2D(BaseRecognizer):
             losses.update(loss_aux)
 
         cls_score = self.cls_head(x, num_segs)
+        
+        # TODO: ha?
+        print("cls_score in recognizer2d.py: ", cls_score.shape) # [24, 51]
         gt_labels = labels.squeeze()
         loss_cls = self.cls_head.loss(cls_score, gt_labels, **kwargs)
         losses.update(loss_cls)

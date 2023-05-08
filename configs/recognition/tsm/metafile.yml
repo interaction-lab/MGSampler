@@ -4,6 +4,30 @@ Collections:
   Name: TSM
   README: configs/recognition/tsm/README.md
 Models:
+- Config: configs/recognition/tsm/tsm_k400_pretrained_r50_1x1x8_25e_hmdb51_rgb.py
+  In Collection: TSM
+  Metadata:
+    Architecture: ResNet50
+    Batch Size: 12
+    Epochs: 25
+    FLOPs: 32959844352
+    Parameters: 23612531
+    Pretrained: Kinetics400
+    Training Data: HMDB51
+    Training Resources: 8 GPUs
+  Modality: RGB
+  Name: tsm_k400_pretrained_r50_1x1x8_25e_hmdb51_rgb
+  Results:
+  - Dataset: HMDB51
+    Metrics:
+      Top 1 Accuracy: 72.68
+      Top 5 Accuracy: 92.03
+    Task: Action Recognition
+  Training Json Log: https://download.openmmlab.com/mmaction/recognition/tsm/tsm_k400_pretrained_r50_1x1x8_25e_hmdb51_rgb/20210605_182554.log.json
+  Training Log: https://download.openmmlab.com/mmaction/recognition/tsm/tsm_k400_pretrained_r50_1x1x8_25e_hmdb51_rgb/20210605_182554.log
+  Weights: https://download.openmmlab.com/mmaction/recognition/tsm/tsm_k400_pretrained_r50_1x1x8_25e_hmdb51_rgb/tsm_k400_pretrained_r50_1x1x8_25e_hmdb51_rgb_20210630-10c74ee5.pth
+  gpu_mem(M): '10388'
+  inference_time(video/s): 74.0 (8x1 frames)
 - Config: configs/recognition/tsm/tsm_r50_1x1x8_50e_kinetics400_rgb.py
   In Collection: TSM
   Metadata:

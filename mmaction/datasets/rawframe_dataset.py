@@ -8,10 +8,10 @@ from .base import BaseDataset
 from .builder import DATASETS
 
 
-with open('/home/zhiyuan/img_diff_sthv1_train.json', 'r') as f:
+with open('img_diff_train_split1.json', 'r') as f:
     img_train = json.load(f)
 
-with open('/home/zhiyuan/img_diff_sthv1_val.json', 'r') as f:
+with open('img_diff_train_split1.json', 'r') as f:
     img_val = json.load(f)
 
 @DATASETS.register_module()
@@ -162,10 +162,12 @@ class RawframeDataset(BaseDataset):
     def prepare_train_frames(self, idx):
         """Prepare the frames for training given the index."""
         results = copy.deepcopy(self.video_infos[idx])
+        # print("video info: ", results)
         results['filename_tmpl'] = self.filename_tmpl
         results['modality'] = self.modality
         results['start_index'] = self.start_index
-        video_name = results['frame_dir'].split("/")[6]
+        video_name = results['frame_dir'].split("/")[8] + '/' + results['frame_dir'].split("/")[9]
+        # print("video name: ", video_name)
         results['img_diff'] = img_train[video_name]
 
 
@@ -183,7 +185,7 @@ class RawframeDataset(BaseDataset):
         results['filename_tmpl'] = self.filename_tmpl
         results['modality'] = self.modality
         results['start_index'] = self.start_index
-        video_name = results['frame_dir'].split("/")[6]
+        video_name = results['frame_dir'].split("/")[8]
         results['img_diff'] = img_val[video_name]
 
 

@@ -85,6 +85,10 @@ class BaseHead(nn.Module, metaclass=ABCMeta):
             # When using soft labels, `labels` and `cls_socre` share the same
             # shape.
             labels = labels.unsqueeze(0)
+        
+        print("cls_score: ", cls_score.shape) # [24, 51]
+        print("labels_score: ", labels.shape) # [12]
+
 
         if not self.multi_class and cls_score.size() != labels.size():
             top_k_acc = top_k_accuracy(cls_score.detach().cpu().numpy(),
